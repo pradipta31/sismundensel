@@ -14,11 +14,13 @@ class JenisImunisasi extends Model
     	'polio_2',
     	'polio_3',
     	'polio_4',
+        'ipv',
     	'bcg',
     	'dpthb_1',
     	'dpthb_2',
     	'dpthb_3',
-    	'campak'
+    	'campak_rubela',
+        'je'
     ];
 
     public function pasien(){

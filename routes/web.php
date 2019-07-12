@@ -98,7 +98,9 @@ Route::group(['middleware' => 'level:kepmas', 'prefix' => 'kepmas', 'namespace' 
     Route::get('imunisasi/{id}/edit-imunisasi', 'ImunisasiController@editImunisasi');
     Route::put('imunisasi/{id}/edit-imunisasi', 'ImunisasiController@updateImunisasi');
     Route::get('imunisasi/{id}/riwayat', 'ImunisasiController@getRiwayat');
+    Route::get('imunisasi/cari', 'ImunisasiController@cariImunisasi');
     Route::get('imunisasi/cetak-imunisasi/{user_id}', 'ImunisasiController@downloadImunisasi');
+    Route::get('imunisasi/cetak-imunisasi/{tgl_imunisasi}/{jenis_imunisasi}', 'ImunisasiController@dwlImunisasi');
 
     Route::get('program/tambah-program', 'ProgramSekolahController@tambahProgramSekolah');
     Route::post('program/tambah-program', 'ProgramSekolahController@simpanProgramSekolah');
@@ -107,8 +109,3 @@ Route::group(['middleware' => 'level:kepmas', 'prefix' => 'kepmas', 'namespace' 
     Route::put('program/{id}/edit-program', 'ProgramSekolahController@updateProgramSekolah');
     Route::get('program/cetak-program/{user_id}', 'ProgramSekolahController@downloadProgramSekolah');
 });
-
-
-
-
-

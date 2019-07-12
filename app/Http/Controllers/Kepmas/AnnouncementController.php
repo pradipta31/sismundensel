@@ -22,11 +22,11 @@ class AnnouncementController extends Controller
             'judul' => 'required',
             'isi' => 'required',
         ]);
-  
-        $check = Announcement::where('judul', '=', $r->judul)->first(); 
-        
+
+        $check = Announcement::where('judul', '=', $r->judul)->first();
+
         if(!$validator->fails()){
-           if($check == null){ 
+           if($check == null){
                if ($r->gambar != null) {
                     $gambar = $r->file('gambar');
                     $filename = time() . '.' . $gambar->getClientOriginalExtension();
@@ -34,6 +34,7 @@ class AnnouncementController extends Controller
                     $announcement = Announcement::create([
                         'user_id' => Auth::user()->id,
                         'judul' => $r->judul,
+                        'gambar' => $filename,
                         'isi' => $r->isi
                     ]);
                     Session::flash('sukses', 'Data Pengumuman '.$r->judul.' berhasil ditambahkan!');
@@ -51,7 +52,7 @@ class AnnouncementController extends Controller
                 }
             }else{
                 Session::flash('error', 'Pengumuman '.$r->judul.' sudah ada'); // nampilin alert
-                return redirect()->back()->withInput(); // 
+                return redirect()->back()->withInput(); //
             }
         }else{
             Session::flash('error', $validator->messages()->first());
@@ -81,6 +82,8 @@ class AnnouncementController extends Controller
                 if ($r->gambar != null) {
                     $gambar = $r->file('gambar');
                     $filename = time() . '.' . $gambar->getClientOriginalExtension();
+                    $find_img = Announcement::findOrFail($id);
+                    unlink(public_path('/images/pengumuman/') . $find_img->gambar);
                     Image::make($gambar)->resize(800, 800)->save(public_path('/images/pengumuman/'.$filename));
                     $announcement = Announcement::findOrFail($id)->update([
                         'judul' => $r->judul,
@@ -108,5 +111,3 @@ class AnnouncementController extends Controller
         }
     }
 }
-
- 

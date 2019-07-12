@@ -87,8 +87,6 @@
                                 <div class="input-group">
                                     <select class="form-control" name="jenis_imunisasi" value="{{$imunisasi->jenis_imunisasi}}">
                                         <option value="Hepatitis B 0" {{$imunisasi->jenis_imunisasi == 'Hepatitis B 0' ? 'selected' : ''}}>Hepatitis B 0</option>
-                                        <option value="BCG" {{$imunisasi->jenis_imunisasi == 'BCG' ? 'selected' : ''}}>BCG
-                                        </option>
                                          <option value="Polio 1" {{$imunisasi->jenis_imunisasi == 'Polio 1' ? 'selected' : ''}}>Polio 1
                                         </option>
                                          <option value="Polio 2" {{$imunisasi->jenis_imunisasi == 'Polio 2' ? 'selected' : ''}}>Polio 2
@@ -97,13 +95,18 @@
                                         </option>
                                          <option value="Polio 4" {{$imunisasi->jenis_imunisasi == 'Polio 4' ? 'selected' : ''}}>Polio 4
                                         </option>
+                                        <option value="IPV" {{$imunisasi->jenis_imunisasi == 'IPV' ? 'selected' : ''}}>IPV</option>
+                                        <option value="BCG" {{$imunisasi->jenis_imunisasi == 'BCG' ? 'selected' : ''}}>BCG
+                                        </option>
                                          <option value="DPT/HB 1" {{$imunisasi->jenis_imunisasi == 'DPT/HB 1' ? 'selected' : ''}}>DPT/HB 1
                                         </option>
                                          <option value="DPT/HB 2" {{$imunisasi->jenis_imunisasi == 'DPT/HB 2' ? 'selected' : ''}}>DPT/HB 2
                                         </option>
                                          <option value="DPT/HB 3" {{$imunisasi->jenis_imunisasi == 'DPT/HB 3' ? 'selected' : ''}}>DPT/HB 3
                                         </option>
-                                         <option value="Campak" {{$imunisasi->jenis_imunisasi == 'Campak' ? 'selected' : ''}}>Campak
+                                        <option value="Campak-Rubela" {{$imunisasi->jenis_imunisasi == 'Campak-Rubela' ? 'selected' : ''}}>Campak-Rubela
+                                        </option>
+                                         <option value="je" {{$imunisasi->jenis_imunisasi == 'Campak-Rubela' ? 'selected' : ''}}>JE
                                         </option>
 
                                     </select>

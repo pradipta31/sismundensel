@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('css')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+@endsection
 @section('content')
     <div class="page-wrapper">
         <div class="container-fluid">
@@ -22,16 +25,26 @@
                     <div class="card">
                         <div class="card-body">
                         <h4 class="card-title">Tambah Imunisasi</h4>
-                        <form class="form p-t-20" action="{{url('admin/imunisasi/tambah-imunisasi')}}" 
+                        <form class="form p-t-20" action="{{url('admin/imunisasi/tambah-imunisasi')}}"
                         method="post">
                             {{csrf_field()}}
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Puskesmas</label>
                                 <div class="input-group">
-                                    <select class="form-control" name="puskesmas_id">
+                                    <select class="form-control" id="selectstyle" name="puskesmas_id">
                                         @foreach($puskesmas as $p)
                                             <option value="{{$p->id}}">{{$p->nama}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Pasien</label>
+                                <div class="input-group">
+                                    <select class="form-control" id="selectpasien" name="pasien_id">
+                                        @foreach($pasiens as $p)
+                                            <option value="{{$p->id}}">{{$p->nama_pasien}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -45,17 +58,19 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Jenis Imunisasi</label>
                                 <div class="input-group">
-                                    <select class="form-control" name="jenis_imunisasi">
+                                    <select class="form-control" id="selectimunisasi" name="jenis_imunisasi">
                                         <option value="hepatitis_b_0">Hepatitis B 0</option>
                                         <option value="polio_1">Polio 1</option>
                                         <option value="polio_2">Polio 2</option>
                                         <option value="polio_3">Polio 3</option>
                                         <option value="polio_4">Polio 4</option>
-                                         <option value="bcg"> BCG</option>
-                                         <option value="dpthb_1">DPT/HB 1</option>
-                                         <option value="dpthb_2">DPT/HB 2</option>
-                                         <option value="dpthb_3">DPT/HB 3</option>
-                                         <option value="campak">Campak</option>
+                                        <option value="ipv"> IPV</option>
+                                        <option value="bcg"> BCG</option>
+                                        <option value="dpthb_1">DPT/HB 1</option>
+                                        <option value="dpthb_2">DPT/HB 2</option>
+                                        <option value="dpthb_3">DPT/HB 3</option>
+                                        <option value="campak_rubela">Campak-RUbela</option>
+                                        <option value="ipv"> JE</option>
                                     </select>
                                 </div>
                             </div>
@@ -71,4 +86,12 @@
     </div>
 @endsection
 @section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#selectstyle').select2();
+      $('#selectpasien').select2();
+      $('#selectimunisasi').select2();
+    });
+  </script>
 @endsection

@@ -51,11 +51,13 @@
                                         <option value="polio_2">Polio 2</option>
                                         <option value="polio_3">Polio 3</option>
                                         <option value="polio_4">Polio 4</option>
-                                         <option value="bcg"> BCG</option>
-                                         <option value="dpthb_1">DPT/HB 1</option>
-                                         <option value="dpthb_2">DPT/HB 2</option>
-                                         <option value="dpthb_3">DPT/HB 3</option>
-                                         <option value="campak">Campak</option>
+                                        <option value="ipv"> IPV</option>
+                                        <option value="bcg"> BCG</option>
+                                        <option value="dpthb_1">DPT/HB 1</option>
+                                        <option value="dpthb_2">DPT/HB 2</option>
+                                        <option value="dpthb_3">DPT/HB 3</option>
+                                        <option value="campak_rubela">Campak-Rubela</option>
+                                         <option value="je"> JE</option>
                                     </select>
                                 </div>
                             </div>

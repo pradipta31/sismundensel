@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('css')
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+@endsection
 @section('content')
     <div class="page-wrapper">
         <div class="container-fluid">
@@ -21,91 +24,53 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                        <h4 class="card-title">Edit Imunisasi: {{$imunisasi->nama_pasien}}</h4>
+                        <h4 class="card-title">Edit Imunisasi: {{$imunisasi->pasien->nama_pasien}}</h4>
                         <form class="form p-t-20" action="{{url('admin/imunisasi/'.$imunisasi->id.'/edit-imunisasi')}}" method="post">
                             {{csrf_field()}}
                             <input type="hidden" name="_method" value="put">
+                            <input type="hidden" name="pasien_id" value="{{$imunisasi->pasien_id}}">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Puskesmas</label>
                                 <div class="input-group">
-                                    <select class="form-control" name="puskesmas_id">
+                                    <select class="form-control" name="puskesmas_id" id="selectpuskesmas" value="{{$imunisasi->puskesmas_id}}" disabled>
                                         @foreach($puskesmas as $p)
-                                            <option value="{{$p->id}}" {{$p->id == $p->id ? '' : ''}}>{{$p->nama}}</option>
+                                            <option value="{{$p->id}}" {{$imunisasi->puskesmas_id == $p->id ? 'selected' : ''}}>{{$p->nama}}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>                      
-                            <div class="form-group">
-                                <label for="exampleInputuname">Nama  Pasien</label>
-                                <div class="input-group">
-                                    <input type="text" name="nama_pasien" class="form-control" value="{{$imunisasi->nama_pasien}}">
-                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Tempat Lahir</label>
+                                <label for="exampleInputEmail1">Pasien</label>
                                 <div class="input-group">
-                                    <input type="text" name="tempat_lahir" class="form-control" id="exampleInputEmail1" value="{{$imunisasi->tempat_lahir}}">
+                                    <select class="form-control" id="selectpasien" name="pasien_id" value="{{$imunisasi->pasien_id}}" disabled>
+                                        @foreach($pasiens as $p)
+                                            <option value="{{$p->id}}" {{$imunisasi->pasien_id == $p->id ? 'selected' : ''}}>{{$p->nama_pasien}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Tanggal Lahir</label>
-                                <div class="input-group">
-                                    <input type="date" name="tgl_lahir" class="form-control" id="exampleInputEmail1" value="{{$imunisasi->tgl_lahir}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Jenis Kelamin Bayi</label>
-                                  <select class="form-control" name="jk_bayi">
-                                    <option value="L" {{$imunisasi->jk_bayi == 'L' ? 'selected' : ''}}>Laki-laki</option>
-                                    <option value="P" {{$imunisasi->jk_bayi == 'P' ? 'selected' : ''}}>Perempuan</option>
-                                </select>
-                            </div>
-                             <div class="form-group">
-                                <label for="exampleInputEmail1">Umur</label>
-                                <div class="input-group">
-                                    <input type="text" name="umur" class="form-control" id="exampleInputEmail1" value="{{$imunisasi->umur}}">
-                                </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Nama Orang Tua</label>
-                                <div class="input-group">
-                                    <input type="text" name="nama_orangtua" class="form-control" id="exampleInputEmail1" value="{{$imunisasi->nama_orangtua}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Alamat</label>
-                                <div class="input-group">
-                                    <input type="text" name="alamat" class="form-control" id="exampleInputEmail1" value="{{$imunisasi->alamat}}">
-                                </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tanggal Imunisasi</label>
                                 <div class="input-group">
-                                 <input type="date" name="tgl_imunisasi" class="form-control" id="exampleInputEmail1" value="{{$imunisasi->tgl_imunisasi}}">
+                                    <input type="date" name="tgl_imunisasi" class="form-control" id="exampleInputEmail1" value="{{$imunisasi->tgl_imunisasi}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Jenis Imunisasi</label>
+                                <label for="exampleInputEmail1">Jenis Imunisasi</label>
                                 <div class="input-group">
-                                    <select class="form-control" name="jenis_imunisasi" value="{{$imunisasi->jenis_imunisasi}}">
-                                        <option value="Hepatitis B 0" {{$imunisasi->jenis_imunisasi == 'Hepatitis B 0' ? 'selected' : ''}}>Hepatitis B 0</option>
-                                        <option value="BCG" {{$imunisasi->jenis_imunisasi == 'BCG' ? 'selected' : ''}}>BCG
-                                        </option>
-                                         <option value="Polio 1" {{$imunisasi->jenis_imunisasi == 'Polio 1' ? 'selected' : ''}}>Polio 1
-                                        </option>
-                                         <option value="Polio 2" {{$imunisasi->jenis_imunisasi == 'Polio 2' ? 'selected' : ''}}>Polio 2
-                                        </option>
-                                         <option value="Polio 3" {{$imunisasi->jenis_imunisasi == 'Polio 3' ? 'selected' : ''}}>Polio 3
-                                        </option>
-                                         <option value="Polio 4" {{$imunisasi->jenis_imunisasi == 'Polio 4' ? 'selected' : ''}}>Polio 4
-                                        </option>
-                                         <option value="DPT/HB 1" {{$imunisasi->jenis_imunisasi == 'DPT/HB 1' ? 'selected' : ''}}>DPT/HB 1
-                                        </option>
-                                         <option value="DPT/HB 2" {{$imunisasi->jenis_imunisasi == 'DPT/HB 2' ? 'selected' : ''}}>DPT/HB 2
-                                        </option>
-                                         <option value="DPT/HB 3" {{$imunisasi->jenis_imunisasi == 'DPT/HB 3' ? 'selected' : ''}}>DPT/HB 3
-                                        </option>
-                                         <option value="Campak" {{$imunisasi->jenis_imunisasi == 'Campak' ? 'selected' : ''}}>Campak
-                                        </option>
-
+                                    <select class="form-control" id="selectimunisasi" name="jenis_imunisasi" value="{{$imunisasi->jenis_imunisasi}}">
+                                        <option value="hepatitis_b_0" {{$imunisasi->jenis_imunisasi == 'hepatitis_b_0' ? 'selected' : ''}}>Hepatitis B 0</option>
+                                        <option value="polio_1" {{$imunisasi->jenis_imunisasi == 'polio_1' ? 'selected' : ''}}>Polio 1</option>
+                                        <option value="polio_2" {{$imunisasi->jenis_imunisasi == 'polio_2' ? 'selected' : ''}}>Polio 2</option>
+                                        <option value="polio_3" {{$imunisasi->jenis_imunisasi == 'polio_3' ? 'selected' : ''}}>Polio 3</option>
+                                        <option value="polio_4" {{$imunisasi->jenis_imunisasi == 'polio_4' ? 'selected' : ''}}>Polio 4</option>
+                                         <option value="ipv" {{$imunisasi->jenis_imunisasi == 'ipv' ? 'selected' : ''}}> IPV</option>
+                                        <option value="bcg" {{$imunisasi->jenis_imunisasi == 'bcg' ? 'selected' : ''}}> BCG</option>
+                                        <option value="dpthb_1" {{$imunisasi->jenis_imunisasi == 'dpthb_1' ? 'selected' : ''}}>DPT/HB 1</option>
+                                        <option value="dpthb_2" {{$imunisasi->jenis_imunisasi == 'dpthb_2' ? 'selected' : ''}}>DPT/HB 2</option>
+                                        <option value="dpthb_3" {{$imunisasi->jenis_imunisasi == 'dpthb_3' ? 'selected' : ''}}>DPT/HB 3</option>
+                                        <option value="campak_rubela" {{$imunisasi->jenis_imunisasi == 'campak' ? 'selected' : ''}}>Campak-Rubela</option>
+                                        <option value="je" {{$imunisasi->jenis_imunisasi == 'je' ? 'selected' : ''}}> JE</option>
                                     </select>
                                 </div>
                             </div>
@@ -120,4 +85,14 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#selectpuskesmas').select2();
+    $('#selectpasien').select2();
+    $('#selectimunisasi').select2();
+  });
+</script>
 @endsection

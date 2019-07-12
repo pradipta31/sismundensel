@@ -21,11 +21,13 @@ class CreateJenisImunisasisTable extends Migration
             $table->integer('polio_2')->nullable();
             $table->integer('polio_3')->nullable();
             $table->integer('polio_4')->nullable();
+            $table->integer('ipv')->nullable();
             $table->integer('bcg')->nullable();
             $table->integer('dpthb_1')->nullable();
             $table->integer('dpthb_2')->nullable();
             $table->integer('dpthb_3')->nullable();
-            $table->integer('campak')->nullable();
+            $table->integer('campak_rubela')->nullable();
+            $table->integer('je')->nullable();
             $table->timestamps();
         });
     }

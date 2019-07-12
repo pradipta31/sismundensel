@@ -116,6 +116,8 @@
                                         </option>
                                          <option value="Polio 4" {{$programsekolah->jenis_imunisasi == 'Polio 4' ? 'selected' : ''}}>Polio 4
                                         </option>
+                                        <option value="BCG" {{$programsekolah->jenis_imunisasi == 'IPV' ? 'selected' : ''}}>IPV
+                                        </option>
                                          <option value="DPT/HB 1" {{$programsekolah->jenis_imunisasi == 'DPT/HB 1' ? 'selected' : ''}}>DPT/HB 1
                                         </option>
                                          <option value="DPT/HB 2" {{$programsekolah->jenis_imunisasi == 'DPT/HB 2' ? 'selected' : ''}}>DPT/HB 2

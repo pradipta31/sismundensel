@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>(Sistem Informasi Imunisasi Anak Berbasis Web di Puskesmas Induk Denpasar Selatan II)</title> <!-- <<<<<<<<<< REMINDER -->
+    <title>Sistem Informasi Imunisasi Anak Berbasis Web di Puskesmas Induk Denpasar Selatan II</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link href="{{asset('backend/css/lib/bootstrap/bootstrap.min.css')}}" rel="stylesheet">

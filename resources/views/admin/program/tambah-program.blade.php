@@ -88,12 +88,13 @@
                                         <option value="Polio 2">Polio 2</option>
                                         <option value="Polio 3">Polio 3</option>
                                         <option value="Polio 4">Polio 4</option>
-                                         <option value="BCG"> BCG</option>
-                                         <option value="DPT/HB 1">DPT/HB 1</option>
-                                         <option value="DPT/HB 2">DPT/HB 2</option>
-                                         <option value="DPT/HB 3">DPT/HB 3</option>
-                                         <option value="M-R">M-R</option>
-                                         <option value="JE">JE</option>
+                                        <option value="BCG"> BCG</option>
+                                        <option value="IPV"> IPV</option>
+                                        <option value="DPT/HB 1">DPT/HB 1</option>
+                                        <option value="DPT/HB 2">DPT/HB 2</option>
+                                        <option value="DPT/HB 3">DPT/HB 3</option>
+                                        <option value="M-R">M-R</option>
+                                        <option value="JE">JE</option>
                                     </select>
                                 </div>
                             </div>

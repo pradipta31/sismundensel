@@ -16,7 +16,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 class ProgramSekolahController extends Controller
 {
      public function tambahProgramSekolah(){
-    	$puskesmas = Puskesmas::all();
+    	$puskesmas = Puskesmas::where('status','aktif')->get();
         return view('admin.program.tambah-program', compact('puskesmas'));
     }
     public function SimpanProgramSekolah(Request $r){

@@ -19,6 +19,7 @@ class CreateImunisasisTable extends Migration
             $table->integer('puskesmas_id')->unsigned();
             $table->integer('pasien_id')->unsigned();
             $table->date('tgl_imunisasi');
+            $table->string('jenis_imunisasi');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('puskesmas_id')->references('id')->on('puskesmas');
